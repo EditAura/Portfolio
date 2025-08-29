@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Video Editor Portfolio</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #1a202c;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #212a39;
+      padding: 28px 0 18px 0;
+      text-align: center;
+      box-shadow: 0 2px 18px rgba(250,78,121,0.15);
+    }
+    header h1 {
+      font-size: 2.3em;
+      margin: 0;
+      color: #fff;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    header h3 {
+      margin: 5px 0 0 0;
+      font-size: 1.12em;
+      color: #6bd4d4;
+      font-weight: 500;
+    }
+    header p {
+      margin-top: 18px;
+      font-size: 1.2em;
+      color: #ff57a7;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+    /* --- Contact Row Styling --- */
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 44px;
+      background: #23272f;
+      border-radius: 12px;
+      max-width: 440px;
+      margin: 28px auto 0 auto;
+      padding: 16px 12px;
+      box-shadow: 0 2px 18px rgba(255,87,167,0.07);
+      font-size: 1.08em;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .contact-row a, .contact-row span {
+      color: #6bd4d4;
+      text-decoration: none;
+    }
+    .contact-row a:hover {
+      color: #ff57a7;
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .contact-row {
+        flex-direction: column;
+        gap: 10px;
+        max-width: 97vw;
+        padding: 10px;
+        font-size: 1em;
+      }
+    }
+    /* Rest of your styles unchanged... */
+    .about {
+      max-width: 600px;
+      margin: 36px auto 24px auto;
+      background: #23272f;
+      padding: 30px 22px;
+      border-radius: 16px;
+      box-shadow: 0 2px 24px rgba(250,87,167,0.09);
+      border-left: 8px solid #ff57a7;
+    }
+    .about h2 { color: #ff57a7; margin-top: 0; }
+    .carousel-container {
+      max-width: 800px;
+      margin: 38px auto 0 auto;
+      padding: 32px 28px;
+      background: #23272f;
+      border-radius: 16px;
+      box-shadow: 0 2px 24px rgba(107,212,212,0.09);
+      text-align: center;
+      border-right: 8px solid #6bd4d4;
+      color: #fff;
+    }
+    .carousel-title { color: #6bd4d4; margin-bottom: 20px; font-size: 1.55em;}
+    .carousel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+    }
+    video {
+      width: 480px;
+      height: 270px;
+      border-radius: 10px;
+      box-shadow: 0 0 22px rgba(250,87,167,0.09);
+      background: #000;
+      border: 3px solid #6bd4d4;
+    }
+    .carousel-btn {
+      background: #ff57a7;
+      border: none;
+      color: #fff;
+      font-size: 2.2em;
+      padding: 0 22px;
+      border-radius: 100px;
+      cursor: pointer;
+      margin: 0 16px;
+      box-shadow: 0 2px 6px rgba(255,134,0,0.13);
+      transition: background 0.15s;
+    }
+    .carousel-btn:hover {
+      background: #6bd4d4;
+      color: #23272f;
+    }
+    .caption {
+      margin-top: 16px;
+      color: #6bd4d4;
+      font-size: 1.11em;
+      font-weight: 500;
+      min-height: 32px;
+    }
+    .app-links {
+      margin: 15px auto 28px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+    .app-links h3 {
+      color: #ffbb3c;
+      font-weight: 700;
+      margin-top: 22px;
+      margin-bottom: 12px;
+      letter-spacing: 0.2px;
+    }
+    .icon-row {
+      display: flex;
+      justify-content: center;
+      gap: 44px;
+      align-items: center;
+      margin: 13px 0 0 0;
+    }
+    .icon-row a {
+      text-decoration: none;
+      transition: transform 0.15s;
+    }
+    .icon-row a:hover {
+      transform: scale(1.16);
+    }
+    footer {
+      background: #212a39;
+      color: #fff;
+      text-align: center;
+      padding: 22px 0 20px 0;
+      margin-top: 32px;
+      letter-spacing: 0.7px;
+      font-size: 1.09em;
+      font-weight: 500;
+    }
+    footer a { color: #6bd4d4; text-decoration: underline;}
+    @media (max-width: 600px) {
+      video { width: 97vw; height: auto;}
+      .carousel-container, .about, .app-links { max-width: 99vw; padding: 10px;}
+      .icon-row { gap: 26px; }
+    }
+    .sample-links {
+      margin: 22px 0;
+      text-align: left;
+      background: #23272f;
+      padding: 18px 26px;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(255,87,167,0.07);
+    }
+    .sample-links h4 {
+      color: #ffbb3c;
+      font-size: 1.15em;
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .sample-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+    .sample-links li {
+      margin: 0;
+    }
+    .sample-links a {
+      color: #6bd4d4;
+      text-decoration: none;
+      background: #212a39;
+      padding: 7px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: background 0.15s, color 0.15s;
+      box-shadow: 0 2px 6px rgba(106,212,212,0.08);
+      display: inline-block;
+    }
+    .sample-links a:hover {
+      background: #ff57a7;
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      .sample-links { padding: 10px;}
+      .sample-links ul { gap: 9px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EDIT AURA <h3>by Ashraf</h3></h1>
+    <p>Creative Storytelling | Fast Turnaround | Professional Quality</p>
+  </header>
+  <!-- Contact row starts here -->
+  <div class="contact-row">
+    <span>📞 8989019284</span>
+    <a href="mailto:Editaura1825@gmail.com">Editaura1825@gmail.com</a>
+  </div>
+  <!-- Contact row ends here -->
+
+  <section class="about">
+    <h2>About Me</h2>
+    <p>
+      I'm Ashraf at Edit Aura, a passionate video editor experienced in commercials, social media, podcast and short films. I combine cinematic storytelling with technical expertise to deliver compelling visual content that stands out.
+    </p>
+    <p>
+      <strong>What I do the Best:</strong> 
+    <ul>
+      <li><p>Narrative Editing</p></li>
+      <p>For movies, web series, or short films. Focuses on storytelling, continuity, emotions.</p>
+
+      <li><p>Documentary Editing</p></li>
+      <p>Combines interviews, B-roll, voiceovers, and real footage to tell true stories.</p>
+
+      <li><p>Commercial/Ad Editing</p></li>
+      <p>For TV ads, digital marketing, product promos. Must be sharp, eye-catching, and persuasive.</p>
+
+      <li><p>Music Video Editing</p></li>
+      <p>Syncs video with music beats, often includes visual effects, cuts on rhythm.</p>
+
+      <li><p>Event Video Editing</p></li>
+      <p>Weddings, birthdays, concerts, corporate events – highlights + storytelling.</p>
+
+      <li><p>Educational Editing</p></li>
+      <p>Tutorials, lectures, or explainer videos, often using motion graphics and screen recordings.</p>
+
+      <li><p>Social Media Editing</p></li>
+<p>Short-form videos for Instagram, YouTube Shorts, TikTok – fast-paced, trendy, mobile-friendly.</p>
+
+      <li><p>Corporate/Business Video Editing</p></li>
+      <p>For internal training, presentations, interviews, company promos.</p>
+    </ul>
+    <hr> <p><b>By Style</b></p></hr>
+
+    <ul>
+      <li><p>Non-linear Editing (NLE)</p></li>
+        
+    
+    <p>Modern editing on software like Final Cut Pro, flexible, can jump around the timeline.</p>
+
+      <li><p>Cinematic Editing</p></li>
+    <p>Film-like, uses color grading, slow motion, dramatic transitions.</p>
+
+      <li><p>Continuity Editing</p></li>
+    <p>Ensures smooth transitions, consistent space and time – invisible cuts.</p>
+
+<p>Split Screen / Picture-in-Picture - Shows two or more visuals at once – used in interviews, comparisons.</p>
+      </ul>
+    <hr><b><p>By Technique</p></b></hr>
+  <ul>
+    <li><p>Color Grading & Correction</p></li>
+    <p>Adjusting colors for mood and consistency.</p>
+
+    <li><p>Motion Graphics & Animation</p></li>
+    <p>Titles, intros, lower thirds, animated elements.</p>
+
+    <li><p>VFX (Visual Effects)</p></li>
+    <p>Adding explosions, CGI, green screen effects, etc.</p>
+
+    <li><p>Sound Design</p></li>
+    <p>Mixing music, dialogues, sound effects.</P>
+
+  <li><p>Multi-cam Editing</p></li>
+  <p>Editing videos from multiple camera angles (common in podcasts, interviews, live shows).</p>
+
+  <li><p>360°/VR Editing</p></li>
+  <p>For immersive video content – used in gaming, real estate.</p>
+    </p>
+    <!-- ...rest of the section unchanged -->
+    <!-- (Your content continues as before) -->
+  </section>
+  <!-- The rest of your HTML remains unchanged -->
+  <!-- ... -->
+  <section class="carousel-container">
+    <h2 class="carousel-title">Portfolio Showcase</h2>
+    <div class="carousel">
+      <button class="carousel-btn" id="prevBtn">&#8249;</button>
+      <video id="portfolioVideo" controls preload="metadata" poster="https://www.w3schools.com/html/pic_trulli.jpg">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button class="carousel-btn" id="nextBtn">&#8250;</button>
+    </div>
+    <div class="caption" id="videoCaption">Sample: Commercial Edit</div>
+  </section>
+  <section class="app-links">
+    <h3>Find My Work On</h3>
+    <div class="icon-row">
+      <!-- Instagram, Google Drive, YouTube links commented out -->
+      <div class="sample-links">
+        <h4>More Sample Videos Links</h4>
+        <ul>
+          <li><a href="https://youtu.be/SuN_Ie6lybg?si=CVOt03syGyncAhtF" target="_blank">Commercial Podcast Edit</a></li>
+          <li><a href="https://youtube.com/shorts/VR0813TDWZw?si=o1GHpdZ3qfDWRk8B" target="_blank">YT Short 1</a></li>
+          <li><a href="https://youtube.com/shorts/2rgEToOf-qA?si=wZjkGur9Uy7dxXiN" target="_blank">YT Short 2</a></li>
+          <li><a href="https://youtu.be/JmCQxu1MzmA?si=wjbfaoAs15OF4BDD" target="_blank">Short Clip Scene</a></li>
+          <li><a href="https://youtube.com/shorts/EecIS6CRki4?si=YNcvwlxyjGaPWt8y" target="_blank">Instagram Reel</a></li>
+          <li><a href="https://youtube.com/shorts/OLi6cgZS5ag?si=tlX2OLKZ2n06eYPJ" target="_blank">YT Short 3</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <footer>
+    &copy; 2025 Edit Aura | <a href="mailto:editaura@email.com">Editaura1825@gmail.com</a>
+  </footer>
+  <script>
+    // Simple video carousel
+    const videos = [
+      {
+        src: "The Flag Law You Didn’t Know About 2.mp4",
+        caption: "Sample: Commercial Edit",
+        poster: "Screenshot 2025-08-29 at 10.56.11 AM.png"
+      },
+      {
+        src: "chirayu university 01.mp4",
+        caption: "Sample: Reel Video",
+        poster: "Screenshot 2025-08-29 at 11.02.44 AM.png"
+      },
+      {
+        src: "podcast 16 trailor.mp4",
+        caption: "Sample: Podcast Scene",
+        poster: "Screenshot 2025-08-29 at 5.13.23 PM.png"
+      }
+    ];
+    let current = 0;
+    const videoElem = document.getElementById('portfolioVideo');
+    const captionElem = document.getElementById('videoCaption');
+    function loadVideo(idx) {
+      videoElem.src = videos[idx].src;
+      videoElem.poster = videos[idx].poster;
+      captionElem.textContent = videos[idx].caption;
+      videoElem.load();
+    }
+    document.getElementById('prevBtn').onclick = function() {
+      current = (current - 1 + videos.length) % videos.length;
+      loadVideo(current);
+    };
+    document.getElementById('nextBtn').onclick = function() {
+      current = (current + 1) % videos.length;
+      loadVideo(current);
+    };
+    // Initialize
+    loadVideo(0);
+  </script>
+</body>
+</html>
